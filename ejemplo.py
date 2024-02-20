@@ -1,3 +1,5 @@
-print("Hola Mundo")
-x = c(1,2,3,4,5)
-print(x)
+import archivo2
+# import imple
+
+if __name__=="__main__":
+    print(f"Ejecuntaose desde __name__=={__name__}")
