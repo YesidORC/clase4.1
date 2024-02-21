@@ -1,5 +1,8 @@
 import archivo2
-# import imple
+def main():
+    nombre= ""
+    e
+
 
 if __name__=="__main__":
-    print(f"Ejecuntaose desde __name__=={__name__}")
+    main()

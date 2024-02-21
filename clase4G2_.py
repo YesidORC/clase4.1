@@ -61,4 +61,10 @@ class Sistema:
                 print("Servicio: " + paciente.verServicio())
                 
 
+def main():
+    a= Sistema()
+    a.ingresarPaciente()
 
+
+if __name__=="__main__":
+    main()
