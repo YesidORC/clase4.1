@@ -8,3 +8,5 @@ else:
     print("Ejecutando desde archivo importado_ voy a verifificar conflictos")
     print("Ejecutando desde archivo importado_ voy a verifificar conflictos")
 
+
+print(f"buscando mas {2*3*5*6} cosas conflictivas")
