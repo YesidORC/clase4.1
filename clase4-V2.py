@@ -30,7 +30,8 @@ class Sistema:
     def eliminarPaciente(self,c):
         a = self.verDatosPaciente(c)
         if a !=  None:
-            del self.__lista_pacientes.remove(a)
+            self.__lista_pacientes.remove(a)
+            # del self.__lista_pacientes[indice]
         else:
             return False
             
