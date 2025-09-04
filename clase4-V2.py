@@ -28,8 +28,12 @@ class Sistema:
         self.__lista_pacientes = []
       
     def eliminarPaciente(self,c):
-        if self.verDatosPaciente(c):
-            pass
+        a = self.verDatosPaciente(c)
+        if a !=  None:
+            del self.__lista_pacientes.remove(a)
+        else:
+            return False
+            
       
     def verificarPac(self,ced):
         encontrado =  False
