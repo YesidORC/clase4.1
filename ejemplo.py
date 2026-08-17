@@ -1,4 +1,5 @@
-import archivo2 import *
+from archivo2 import *
+# from clase4-V2 import *
 
 def main():
     sis = Sistema() 

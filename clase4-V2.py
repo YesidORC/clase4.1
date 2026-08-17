@@ -2,9 +2,17 @@ class Paciente:
     def __init__(self):
         self.__nombre = "juanita"
         self.__cedula = int
+        self.__edad = 0
         self.__genero = ""
         self.__servicio = ""
-        
+
+    def __str__(self):
+        return "Nombre: " + self.__nombre + " Cedula: " + str(self.__cedula) + " Genero: " + self.__genero + " Servicio: " + self.__servicio
+
+    def __add__(self, otro):
+        return self.__edad + " " + otro.__edad
+
+    #getters    
     def verNombre(self):
         return self.__nombre
     def verServicio(self):
@@ -13,7 +21,7 @@ class Paciente:
         return self.__genero
     def verCedula(self):
         return self.__cedula
-    
+    #setters
     def asignarNombre(self,n):
         self.__nombre = n
     def asignarServicio(self,s):
@@ -26,17 +34,21 @@ class Paciente:
 class Sistema:
     def __init__(self):
         self.__lista_pacientes = []
+
+    def __str__(self):
+        return "En el sistema hay: " + str(len(self.__lista_pacientes)) + " pacientes"
       
     def eliminarPaciente(self,c):
         a = self.verDatosPaciente(c)
         if a !=  None:
             self.__lista_pacientes.remove(a)
+            return True
             # del self.__lista_pacientes[indice]
         else:
             return False
             
       
-    def verificarPac(self,ced):
+    def __verificarPac(self,ced:int):
         encontrado =  False
         for p in self.__lista_pacientes:
             if ced == p.verCedula():
@@ -45,27 +57,26 @@ class Sistema:
         return encontrado
 
     def ingresarPaciente(self,pac):
-        if self.verificarPac(pac.verCedula()):
+        if self.__verificarPac(pac.verCedula()):
             return False
         self.__lista_pacientes.append(pac)
         return True
 
     def verDatosPaciente(self,c):
-        if self.verificarPac(c) == False:
+        if self.__verificarPac(c) == False:
             return None
         for p in self.__lista_pacientes:
             if c == p.verCedula():
                 return p
+            
     def verNumeroPacientes(self):
-        # print("Enel sistema hay: " + str(len(self.__lista_pacientes)) + " pacientes")
+        # print("En el sistema hay: " + str(len(self.__lista_pacientes)) + " pacientes")
         return len(self.__lista_pacientes)
         
 def main():
     sis = Sistema()
-    sis1 = Sistema()
-    sis2 = Sistema()
     while True:
-        opcion = int(input("Ingrese 0 para volver al menu, 1 para ingresar nuevo paciente, 2 ver paciente: , 3 - ver cantidad de pacientes "))
+        opcion = int(input("Ingrese 0 para volver al menu, 1 para ingresar nuevo paciente, 2 - ver paciente: , 3 - ver cantidad de pacientes , 4 - Eliminar un paciente"))
         if opcion == 1:
             print("A continuacion se solicitaran los seguientes datos:")
             # 1 Se solicitaran los datos
@@ -80,7 +91,7 @@ def main():
             pac.asignarCedula(cedula)
             pac.asignarGenero(genero)
             pac.asignarServicio(servicio)
-            r = sis2.ingresarPaciente(pac)
+            r = sis.ingresarPaciente(pac)
             # 3 se almacena en la lista que esta dentro de la clase sistema
 
             if r == True:
@@ -98,13 +109,17 @@ def main():
             if p == None:
                 print("El paciente no se encotró")
             else:
-                print("Nombre: " + p.verNombre())
-                print("Cedula: " + str(p.verCedula()))
-                print("Genero: " + p.verGenero())
-                print("Servicio: " + p.verServicio())
+                print(p)
         
         elif opcion == 3:
             print(f"la cantidad de pacientes en el sistema es: {sis.verNumeroPacientes()}")
+
+        elif opcion == 4 :
+            c = int(input("Cédula: "))
+            if sis.eliminarPaciente(c):
+                print ("Paciente eliminado exitosamente")
+            else:
+                print(f"No se encontró el paciente con cédula {c}, inténtelo nuevamente ")
                     
         elif opcion != 0:
             continue

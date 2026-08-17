@@ -9,13 +9,13 @@ class Sistema:
     def __init__(self):
         self.__lista_pacientes = [] 
     def __str__(self):
-        return f" {len(self.__lista_pacientes} en el sistema "
+        return f" {len(self.__lista_pacientes)} en el sistema "
     def ingresarPaciente(self,pac):
         self.__lista_pacientes.append(pac) 
 
 if __name__ == "__main__":
-    print(f"Ejecutando desde archivo principal con __name__= {__name__}  /
-    se crean objetos de para hacer pruebas Paciente y Sistema")
+    print(f"Ejecutando desde archivo principal con __name__= {__name__} \
+          se crean objetos de para hacer pruebas Paciente y Sistema")
     p =  Paciente()
     hosp =  Sistema()
     hosp.ingresarPaciente(p)
